@@ -1,0 +1,666 @@
+@charset 'utf-8';
+
+@import 'settings';
+@import 'foundation';
+@import 'motion-ui';
+
+@include foundation-global-styles;
+@include foundation-grid;
+@include foundation-flex-grid;
+//
+@include foundation-xy-grid-classes;
+@include foundation-typography;
+@include foundation-button;
+@include foundation-forms;
+// @include foundation-range-input;
+@include foundation-accordion;
+@include foundation-accordion-menu;
+@include foundation-badge;
+@include foundation-breadcrumbs;
+@include foundation-button-group;
+@include foundation-callout;
+@include foundation-card;
+@include foundation-close-button;
+@include foundation-menu;
+@include foundation-menu-icon;
+@include foundation-drilldown-menu;
+@include foundation-dropdown;
+@include foundation-dropdown-menu;
+@include foundation-responsive-embed;
+@include foundation-label;
+@include foundation-media-object;
+@include foundation-off-canvas;
+@include foundation-orbit;
+@include foundation-pagination;
+@include foundation-progress-bar;
+@include foundation-slider;
+@include foundation-sticky;
+@include foundation-reveal;
+@include foundation-switch;
+@include foundation-table;
+@include foundation-tabs;
+@include foundation-thumbnail;
+@include foundation-title-bar;
+@include foundation-tooltip;
+@include foundation-top-bar;
+@include foundation-visibility-classes;
+@include foundation-float-classes;
+@include foundation-flex-classes;
+
+// @include foundation-prototype-classes;
+
+@include motion-ui-transitions;
+@include motion-ui-animations;
+
+.top {
+    height: 400px;
+    border: 1px solid red;
+}
+
+body {
+   // background: #94702d;
+   background: #fff;
+}
+
+.top-bar {
+  ul {
+    color: #fff;
+  }
+}
+
+
+
+.topbar-responsive {
+  background: $topbar-responsive-bg;
+  //padding: 1rem 1.5rem;
+
+  .topbar-responsive-logo {
+    font-family: 'Gruppo', cursive;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #3f750c;
+    vertical-align: middle;
+  }
+
+  .menu {
+    background: $topbar-responsive-bg;
+
+    li:last-of-type {
+      margin-right: 0;
+    }
+
+    a {
+      color: #3f750c;
+      transition: color 0.15s ease-in;
+
+      &:hover {
+        color: #999;
+      }
+
+      @media screen and (max-width: 39.9375em) {
+        padding: 0.875rem 0;
+      }
+    }
+
+    .topbar-responsive-button {
+      color: #5a3e00;
+      border-color: $white;
+      border-radius: 5000px;
+      transition: color 0.15s ease-in, border-color 0.15s ease-in;
+
+      &:hover {
+       // color: lighten($topbar-responsive-bg, 60%);
+       // border-color: lighten($topbar-responsive-bg, 60%);
+       color: #000;
+      }
+
+      @media screen and (max-width: 39.9375em) {
+        width: 100%;
+        margin: 0.875rem 0;
+      }
+    }
+  }
+
+   @media screen and (max-width: 39.9375em) {
+     padding: 0.75rem;
+
+    .top-bar-title {
+      position: relative;
+      width: 100%;
+
+      span {
+        position: absolute;
+        right: 0;
+        border: 1px solid $white;
+        border-radius: 5px;
+        padding: 0.25rem 0.45rem;
+        top: 50%;
+        transform: translateY(-50%);
+
+        .menu-icon {
+          margin-bottom: 4px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity:0;
+  } to {
+    opacity:1;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@include breakpoint(small only) {
+  .topbar-responsive-links {
+    animation-fill-mode: both;
+    animation-duration: 0.5s;
+    width: 100%;
+
+    @if $topbar-responsive-animation-type == slide-down {
+      animation: slideDown 1s ease-in;
+    } @else if $topbar-responsive-animation-type == fade-in {
+      animation: fadeIn 1s ease-in;
+    } @else {
+      animation: none;
+    }
+  }
+}
+
+
+$clean-hero-slider-accent: #baff79;
+
+.clean-hero-slider {
+  .orbit-caption {
+    width: auto;
+    height: auto;
+    background: #acd888;
+    position: absolute;
+    text-align: center;
+    right: 0;
+    left: 0;
+    padding: 0.2rem 2rem;
+
+    @include breakpoint(medium) {
+      @include vertical-center;
+      background: rgba(0,0,0,.6);
+      text-align: left;
+      width: 70%;
+      right: 0;
+      padding: 1rem 2rem;
+    }
+
+    @include breakpoint(xlarge) {
+      padding-right: 10%;
+    }
+
+    @include breakpoint(xxlarge) {
+      padding-right: 20%;
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.25;
+      color: #baff79;
+
+      @include breakpoint(medium) {
+        font-size: 1.1rem;
+      }
+    }
+
+    h3 {
+      color: $clean-hero-slider-accent;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0;
+
+      @include breakpoint(medium) {
+        font-size: 2.5rem;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .orbit-slide {
+    padding-bottom: 40%;
+    background: $black;
+
+    @include breakpoint(medium) {
+      padding-bottom: 0;
+    }
+  }
+
+  .orbit-controls {
+    button {
+      background: $clean-hero-slider-accent;
+      padding: 1rem 0.5rem;
+
+      &:hover {
+        background: $white;
+        color: $black;
+      }
+    }
+
+    .orbit-previous {
+      @include breakpoint(medium) {
+        left: auto;
+        right: 2.4rem;
+      }
+    }
+
+    .orbit-next {
+      @include breakpoint(medium) {
+        right: 0.5rem;
+      }
+    }
+  }
+
+  .orbit-bullets {
+    display: none;
+
+    @include breakpoint(medium) {
+      display: block;
+      margin-bottom: 0;
+      margin-top: -3rem;
+      background: none;
+    }
+
+    button {
+      width: 3rem;
+      height: 0.4rem;
+      border-radius: 0;
+      background-color: $white;
+
+      &.is-active {
+        background-color: $clean-hero-slider-accent;
+      }
+    }
+  }
+
+  ul.orbit-container {
+    height: none !important;
+  }
+
+  li.orbit-slide {
+    max-height: none !important;
+  }
+}
+
+.orbit-image {
+  height: 450px;
+}
+
+/*
+.marketing-site-hero {
+  //margin-bottom: 20px;
+  background: #fff url('/assets/img/homepageBanner.jpg') top right no-repeat;
+  height: $marketing-site-hero-height;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+
+  @media screen and (min-width: 40em) {
+    background-position: center center;
+  }
+}
+
+.marketing-site-hero-content {
+  max-width: $global-width;
+  margin: 0 auto;
+  padding-left: 5%;
+  padding-right: 5%;
+
+  h1 {
+    font-size: 32px;
+    color: #333;
+    text-shadow: 2px 2px 3px #e2a83b;
+  }
+
+  .button.round {
+    border-radius: 5000px;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+
+  .boxes {
+      background: #007bb5;
+  }
+
+  @media screen and (min-width: 40em) {
+    padding-left: 50%;
+  }
+}
+
+.sub-back {
+  background: #999;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  opacity: 0.9;
+
+  .subheader {
+    font-size: 1.25rem;
+    color: #333;
+      
+  }
+}
+
+ */ 
+
+
+.marketing-site-three-up {
+  //background: #fff;
+  color: #3f750c;
+  text-align: center;
+  padding: .75rem 0;
+  margin-top: 40px;
+  margin-bottom: 20px;
+
+  .row {
+    max-width: $marketing-site-three-up-width;
+  }
+
+  .columns {
+    background: #acd888;
+    margin-bottom: 1rem;
+    margin-right: 5px;
+    padding: 10px;
+    border: 1px solid #3f750c;
+    border-radius: 10px 10px;
+
+    @media screen and (min-width: 40em) {
+      margin-bottom: 0;
+    }
+  }
+
+  .fa {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: $primary-color;
+  }
+}
+
+.marketing-site-three-up-headline {
+  margin-bottom: 2rem;
+  font-size: 24px;
+  color: #000;
+  //background: #fff;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+// About Page
+
+// Source: https://designpieces.com/2012/12/social-media-colours-hex-and-rgb/
+$social-brand-facebook: #3b5998;
+$social-brand-twitter: #55acee;
+$social-brand-linkedin: #007bb5;
+$about-the-author-text-transform: uppercase;
+$about-the-author-separator-width: 5rem;
+$about-the-author-separator-thickness: 0.125rem;
+
+.about-the-author {
+  background-color: transparent;
+  color: #000;
+  padding: 1rem;
+  border-top: 1px solid $medium-gray;
+
+  .separator-left {
+    text-align: left;
+    @include clearfix;
+
+    &::after {
+      position: relative;
+      width: $about-the-author-separator-width;
+      border-bottom: $about-the-author-separator-thickness solid $primary-color;
+      margin: 0.3rem auto 0;
+      margin-left: 0;
+    }
+  }
+
+  .author-title {
+    text-transform: $about-the-author-text-transform;
+  }
+
+  .author-social {
+    text-align: center;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+
+    .fa-stack {
+      display: inline-block;
+
+      &.facebook {
+        color: lighten($social-brand-facebook, 10%);
+
+        &:hover,
+        &:focus {
+          color: $social-brand-facebook;
+        }
+      }
+
+      &.twitter {
+        color: lighten($social-brand-twitter, 10%);
+
+        &:hover,
+        &:focus {
+          color: $social-brand-twitter;
+        }
+      }
+
+      &.linkedin {
+        color: lighten($social-brand-linkedin, 10%);
+
+        &:hover,
+        &:focus {
+          color: $social-brand-linkedin;
+        }
+      }
+    }
+  }
+
+  .author-image {
+    background: url('/assets/img/leslye.jpg') center;
+    background-size: cover;
+    //border: 1px solid $medium-gray;
+    border-radius: 50%;
+    height: 300px;
+  }
+}
+
+.head-info {
+  font-weight: bold;
+}
+
+// Main Content
+
+.article-row-section {
+  @include flex-grid-row(null, $global-width, 12);
+  justify-content: center;
+  background: #fff;
+  margin-bottom: 30px;
+  border-radius: 5px 5px;
+  //border: 1px solid #3f750c;
+
+}
+
+.article-row-section-inner {
+  @include flex-grid-column(12);
+
+  @include breakpoint(medium) {
+    @include flex-grid-column(10);
+  }
+}
+
+.article-row-section-header {
+  padding: 1.5rem 0;
+  margin: 0;
+  line-height: 1;
+}
+
+.article-row {
+  display: flex;
+  flex-direction: column;
+  //border-top: 1px solid $light-gray;
+  padding: 1.5rem 0;
+
+   @include breakpoint(medium) {
+    flex-direction: row;
+  }
+}
+
+.article-row-img img {
+  width: 100%;
+
+  @include breakpoint(medium) {
+    max-width: none;
+    width: auto;
+  }
+}
+
+.article-row-content {
+  padding: 1.5rem 0 0;
+  color: $body-font-color;
+
+  @include breakpoint(medium) {
+    padding: 0 0 0 1.5rem;
+  }
+}
+
+.article-row-content-header {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #3f750c;
+}
+
+.article-row-content-description {
+  font-size: 1.0rem;
+}
+
+.article-row-content-author,
+.article-row-content-time {
+  font-size: 0.875rem;
+  margin-bottom: 0;
+  color: $dark-gray;
+}
+
+.article-row-reversed {
+  .article-row-content {
+    order: 2;
+    padding: 0 1.5rem 0 0;
+  }
+
+  .article-row-img {
+    order: 1;
+    padding: 0 0 1.5rem 0;
+  }
+
+  @include breakpoint(medium) {
+    .article-row-content {
+      order: 1;
+    }
+
+    .article-row-img {
+      order: 2;
+    }
+  }
+}
+
+
+
+// Footer
+
+
+
+.marketing-site-footer {
+  background: $marketing-site-footer-bg;
+  color: #3f750c;
+  padding: 2rem 0 0;
+
+  .marketing-site-footer-menu-social a {
+    color: #3f750c;
+  }
+
+  .column-block {
+    margin-bottom: 30px;
+  }
+
+  > .row {
+    margin-bottom: 1rem;
+  }
+
+  @include breakpoint(small only) {
+    .columns {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.marketing-site-footer-name {
+  color: #3f750c;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.marketing-site-footer-title {
+  color: #3f750c;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.marketing-site-footer-block {
+  display: flex;
+  margin-bottom: 1rem;
+
+  .fa {
+    font-size: 2rem;
+    color: darken($marketing-site-footer-bg, 20%);
+  }
+
+  p {
+    margin-left: 1rem;
+    line-height: 1.125rem;
+  }
+}
+
+.marketing-site-footer-bottom {
+  background: #acd888;
+  padding: 1rem 0;
+  border-top: 1px solid #baff79;
+
+  p,
+  .menu {
+    margin-bottom: 0;
+  }
+
+  .marketing-site-footer-bottom-links {
+    justify-content: flex-end;
+
+    a {
+      color: #3f750c;
+    }
+
+    @include breakpoint(medium down) {
+      justify-content: center;
+    }
+  }
+
+  @include breakpoint(medium down) {
+    text-align: center;
+  }
+}
+
+
+  
